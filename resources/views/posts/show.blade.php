@@ -13,6 +13,7 @@
     <h1>{{$post->title}}</h1>
     <h1>{{$post->content}}</h1>
     <h1>{{$post->user->name}}</h1>
+    <a href="{{route('posts.edit',$post->id)}}"><button>edit</button></a>
     <form action="{{route('posts.destroy',$post->id)}}" method="post">
         @csrf
         @method('DELETE')

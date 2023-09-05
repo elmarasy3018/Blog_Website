@@ -52,7 +52,8 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('posts.update', ['post' => $post]);
     }
 
     /**
@@ -60,7 +61,13 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->id = $id;
+        $post->title = strip_tags($request->input('title'));
+        $post->content = strip_tags($request->input('content'));
+        $post->user_id = strip_tags($request->input('user_id'));
+        $post->save();
+        return redirect()->route('posts.index');
     }
 
     /**
