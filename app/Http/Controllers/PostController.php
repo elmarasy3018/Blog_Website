@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -53,6 +54,15 @@ class PostController extends Controller
     public function edit(string $id)
     {
         $post = Post::findOrFail($id);
+
+        if (! Gate::allows('update-post', $post)) {
+            if (Auth::check()) {
+                abort(403);
+            } else {
+                return redirect()->route('login');
+            }
+        }
+
         return view('posts.update', ['post' => $post]);
     }
 
@@ -65,7 +75,6 @@ class PostController extends Controller
         $post->id = $id;
         $post->title = strip_tags($request->input('title'));
         $post->content = strip_tags($request->input('content'));
-        $post->user_id = Auth::id();
         $post->save();
         return redirect()->route('posts.index');
     }
