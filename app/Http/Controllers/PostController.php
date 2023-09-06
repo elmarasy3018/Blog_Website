@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -30,10 +31,9 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $post = new Post;
-        $post->id = strip_tags($request->input('id'));
         $post->title = strip_tags($request->input('title'));
         $post->content = strip_tags($request->input('content'));
-        $post->user_id = strip_tags($request->input('user_id'));
+        $post->user_id = Auth::id();
         $post->save();
         return redirect()->route('posts.index');
     }
@@ -43,7 +43,7 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        $post = Post::with('user')->findOrFail($id);
+        $post = Post::with(['user', 'comment'])->findOrFail($id);
         return view('posts.show', ['post' => $post]);
     }
 
@@ -65,7 +65,7 @@ class PostController extends Controller
         $post->id = $id;
         $post->title = strip_tags($request->input('title'));
         $post->content = strip_tags($request->input('content'));
-        $post->user_id = strip_tags($request->input('user_id'));
+        $post->user_id = Auth::id();
         $post->save();
         return redirect()->route('posts.index');
     }

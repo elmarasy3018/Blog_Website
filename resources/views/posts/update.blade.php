@@ -12,10 +12,8 @@
     <form action="{{route('posts.update',$post->id)}}" method="post">
         @csrf
         @method('PUT')
-        <input type="number" name="id" id="id" value="{{$post->id}}">
         <input type="text" name="title" id="title" value="{{$post->title}}">
         <textarea name="content" id="content" cols="30" rows="10">{{$post->content}}</textarea>
-        <input type="number" name="user_id" id="user_id" value="{{$post->user_id}}">
         <button type="submit">Save</button>
     </form>
 </body>

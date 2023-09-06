@@ -18,6 +18,9 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
+        minWidth: {
+            '1/6': '16.6%',
+        }
     },
 
     plugins: [forms],
