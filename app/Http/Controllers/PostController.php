@@ -23,7 +23,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        if (Auth::check()) {
+            return view('posts.create');
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -85,6 +89,15 @@ class PostController extends Controller
     public function destroy(string $id)
     {
         $post = Post::findOrFail($id);
+
+        if (! Gate::allows('delete-post', $post)) {
+            if (Auth::check()) {
+                abort(403);
+            } else {
+                return redirect()->route('login');
+            }
+        }
+
         $post->delete();
         return redirect()->route('posts.index');
     }

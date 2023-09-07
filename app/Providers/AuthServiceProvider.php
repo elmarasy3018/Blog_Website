@@ -30,5 +30,11 @@ class AuthServiceProvider extends ServiceProvider
                 ? Response::allow()
                 : Response::deny('You must be an administrator to edit a post that is not yours');
         });
+
+        Gate::define('delete-post', function (User $user, Post $post) {
+            return ($user->id === $post->user_id || ProfileController::isAdmin($user->id))
+                ? Response::allow()
+                : Response::deny('You must be an administrator to delete a post that is not yours');
+        });
     }
 }
