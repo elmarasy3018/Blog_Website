@@ -84,7 +84,7 @@
                         <div
                             class="flex items-center py-2 rounded-lg bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-700 dark:bg-gray-900">
                             <input type="hidden" name="post_id" id="post_id" value="{{$post->id}}">
-                            <textarea name="content" id="content" rows="1"
+                            <textarea name="content" id="content" rows="1" required
                                 class="block mr-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Your message..."></textarea>
                             <button type="submit"

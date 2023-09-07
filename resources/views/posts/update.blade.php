@@ -9,14 +9,14 @@
                     <div class="sm:col-span-2">
                         <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Post
                             Title</label>
-                        <input type="text" name="title" id="title"
+                        <input type="text" name="title" id="title" required
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            value="{{$post->title}}" placeholder="Type product name" required="">
+                            value="{{$post->title}}" placeholder="Type product name">
                     </div>
                     <div class="sm:col-span-2">
                         <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Post
                             Content</label>
-                        <textarea name="content" id="content" rows="8"
+                        <textarea name="content" id="content" rows="8" required
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">{{$post->content}}</textarea>
                     </div>
                 </div>

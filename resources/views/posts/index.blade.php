@@ -6,8 +6,8 @@
         <div class="grid grid-cols-3 gap-4">
             @foreach ($posts as $post)
             <div class="p-4 rounded-lg border border-black border-opacity-5 bg-gray-200 hover:bg-gray-300">
-                <img class="rounded-lg" src="{{ asset('images/illustration-1.png') }}" alt="illustration-1"
-                    width="2500px">
+                {{-- <img class="rounded-lg" src="{{ asset('images/illustration-1.png') }}" alt="illustration-1" width="2500px"> --}}
+                <img class="rounded-lg" src="http://127.0.0.1:8000/images/illustration-<?php echo rand(1,4); ?>.png" alt="illustration-1" width="2500px">
                 <header class="my-4">
                     <h1 class="text-3xl mt-3 font-medium">{{ $post->title }}</h1>
                     <p class="text-gray-500 mt-1 font-medium">Created {{ $post->created_at->diffForHumans() }}</p>
