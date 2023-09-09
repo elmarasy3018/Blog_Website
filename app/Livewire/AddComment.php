@@ -31,6 +31,8 @@ class AddComment extends Component
         $comment->save();
         // $this->dispatch('CommentAdded');
         $this->dispatch('CommentAdded');
+        $this->id = '';
+        $this->content = '';
     }
 
     // #[On('CommentAdded')]
