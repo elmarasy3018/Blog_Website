@@ -13,6 +13,7 @@ class Post extends Model
 {
     use Translatable;
 
+    protected $fillable = ['user_id'];
     public $translatedAttributes = ['title', 'content'];
 
     use HasFactory;

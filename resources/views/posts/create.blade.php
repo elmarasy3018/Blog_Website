@@ -7,14 +7,14 @@
                     <a class="nav-link" href="#" id="english-link">EN</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="spanish-link">ES</a>
+                    <a class="nav-link" href="#" id="spanish-link">AR</a>
                 </li>
             </ul>
             <form action="{{ route('posts.store') }}" method="post">
                 @csrf
                 <div class="card-body" id="english-form">
                     <div class="form-group">
-                        <label class="required" for="en_title">{{ trans('cruds.article.fields.title') }} (EN)</label>
+                        <label class="required" for="en_title">Title (EN)</label>
                         <input class="form-control {{ $errors->has('en_title') ? 'is-invalid' : '' }}" type="text"
                             name="en_title" id="en_title" value="{{ old('en_title', '') }}" required>
                         @if ($errors->has('en_title'))
@@ -22,40 +22,36 @@
                                 {{ $errors->first('en_title') }}
                             </div>
                         @endif
-                        <span class="help-block">{{ trans('cruds.article.fields.title_helper') }}</span>
                     </div>
                     <div class="form-group">
-                        <label for="en_content">{{ trans('cruds.article.fields.content') }} (EN)</label>
+                        <label for="en_content">Content (EN)</label>
                         <textarea class="form-control {{ $errors->has('en_content') ? 'is-invalid' : '' }}" name="en_content" id="en_content">{{ old('en_content') }}</textarea>
                         @if ($errors->has('en_content'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('en_content') }}
                             </div>
                         @endif
-                        <span class="help-block">{{ trans('cruds.article.fields.content_helper') }}</span>
                     </div>
                 </div>
                 <div class="card-body hidden" id="spanish-form">
                     <div class="form-group">
-                        <label class="required" for="title">{{ trans('cruds.article.fields.title') }} (ES)</label>
-                        <input class="form-control {{ $errors->has('es_title') ? 'is-invalid' : '' }}" type="text"
-                            name="es_title" id="es_title" value="{{ old('es_title', '') }}" required>
-                        @if ($errors->has('es_title'))
+                        <label class="required" for="title">Title (AR)</label>
+                        <input class="form-control {{ $errors->has('ar_title') ? 'is-invalid' : '' }}" type="text"
+                            name="ar_title" id="ar_title" value="{{ old('ar_title', '') }}" required>
+                        @if ($errors->has('ar_title'))
                             <div class="invalid-feedback">
-                                {{ $errors->first('es_title') }}
+                                {{ $errors->first('ar_title') }}
                             </div>
                         @endif
-                        <span class="help-block">{{ trans('cruds.article.fields.title_helper') }}</span>
                     </div>
                     <div class="form-group">
-                        <label for="es_content">{{ trans('cruds.article.fields.content') }} (ES)</label>
-                        <textarea class="form-control {{ $errors->has('es_content') ? 'is-invalid' : '' }}" name="es_content" id="es_content">{{ old('es_content') }}</textarea>
-                        @if ($errors->has('es_content'))
+                        <label for="ar_content">Content (AR)</label>
+                        <textarea class="form-control {{ $errors->has('ar_content') ? 'is-invalid' : '' }}" name="ar_content" id="ar_content">{{ old('ar_content') }}</textarea>
+                        @if ($errors->has('ar_content'))
                             <div class="invalid-feedback">
-                                {{ $errors->first('es_content') }}
+                                {{ $errors->first('ar_content') }}
                             </div>
                         @endif
-                        <span class="help-block">{{ trans('cruds.article.fields.content_helper') }}</span>
                     </div>
                 </div>
                 {{-- <div class="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">

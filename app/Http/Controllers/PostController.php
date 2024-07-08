@@ -32,13 +32,32 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $post = new Post;
-        $post->title = strip_tags($request->input('title'));
-        $post->content = strip_tags($request->input('content'));
-        $post->user_id = Auth::id();
-        $post->save();
+    // public function store(Request $request)
+    // {
+    //     $post = new Post;
+    //     $post->title = strip_tags($request->input('title'));
+    //     $post->content = strip_tags($request->input('content'));
+    //     $post->user_id = Auth::id();
+    //     $post->save();
+    //     return redirect()->route('posts.index');
+    // }
+
+    public function store(Request $request) {
+        $post_data = [
+           'en' => [
+               'title'       => $request->input('en_title'),
+               'content' => $request->input('en_content')
+           ],
+           'ar' => [
+               'title'       => $request->input('ar_title'),
+               'content' => $request->input('ar_content')
+           ],
+        ];
+
+        // Now just pass this array to regular Eloquent function and Voila!
+        Post::create($post_data);
+
+        // Redirect to the previous page successfully
         return redirect()->route('posts.index');
     }
 
