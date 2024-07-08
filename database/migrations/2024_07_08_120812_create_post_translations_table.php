@@ -12,10 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('post_translations', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-
             // mandatory fields
+            $table->id();
             $table->string('locale')->index();
 
             // Foreign key to the main model
