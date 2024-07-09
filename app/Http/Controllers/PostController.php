@@ -42,16 +42,18 @@ class PostController extends Controller
     //     return redirect()->route('posts.index');
     // }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $post_data = [
-           'en' => [
-               'title'       => $request->input('en_title'),
-               'content' => $request->input('en_content')
-           ],
-           'ar' => [
-               'title'       => $request->input('ar_title'),
-               'content' => $request->input('ar_content')
-           ],
+            'user_id' => Auth::id(),
+            'en' => [
+                'title' => $request->input('en_title'),
+                'content' => $request->input('en_content')
+            ],
+            'ar' => [
+                'title' => $request->input('ar_title'),
+                'content' => $request->input('ar_content')
+            ],
         ];
 
         // Now just pass this array to regular Eloquent function and Voila!
@@ -77,7 +79,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        if (! Gate::allows('update-post', $post)) {
+        if (!Gate::allows('update-post', $post)) {
             if (Auth::check()) {
                 abort(403);
             } else {
@@ -108,7 +110,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        if (! Gate::allows('delete-post', $post)) {
+        if (!Gate::allows('delete-post', $post)) {
             if (Auth::check()) {
                 abort(403);
             } else {
