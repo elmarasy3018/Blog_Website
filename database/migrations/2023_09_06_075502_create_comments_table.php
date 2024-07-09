@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('content');
             $table->integer('post_id');
-            $table->integer('user_id')->default(0);
+            $table->integer('user_id')->default(1);
             $table->timestamps();
         });
     }

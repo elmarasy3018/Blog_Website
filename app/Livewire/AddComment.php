@@ -26,10 +26,9 @@ class AddComment extends Component
         if (Auth::check()) {
             $comment->user_id = Auth::id();
         } else {
-            $comment->user_id = 0;
+            $comment->user_id = 1;
         }
         $comment->save();
-        // $this->dispatch('CommentAdded');
         $this->dispatch('CommentAdded');
         $this->id = '';
         $this->content = '';

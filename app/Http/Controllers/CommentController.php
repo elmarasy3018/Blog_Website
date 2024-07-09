@@ -29,16 +29,18 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $comment = new Comment;
-        $comment->content = strip_tags($request->input('content'));
-        $comment->post_id = strip_tags($request->input('post_id'));
-        if (Auth::check()) {
-            $comment->user_id = Auth::id();
-        } else {
-            $comment->user_id = 0;
-        }
-        $comment->save();
-        return redirect()->route('posts.show', $comment->post_id);
+        //Not working go to App\Livewire\AddComment.php
+
+        // $comment = new Comment;
+        // $comment->content = strip_tags($request->input('content'));
+        // $comment->post_id = strip_tags($request->input('post_id'));
+        // if (Auth::check()) {
+        //     $comment->user_id = Auth::id();
+        // } else {
+        //     $comment->user_id = 1;
+        // }
+        // $comment->save();
+        // return redirect()->route('posts.show', $comment->post_id);
     }
 
     /**
